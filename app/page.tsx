@@ -5,6 +5,7 @@ import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react'
 import { gsap } from 'gsap';
 import { Bebas_Neue, Inter } from 'next/font/google';
 import { EducationSection } from '@/src/components/sections/EducationSection';
+import { ContactSection } from '@/src/components/sections/ContactSection';
 
 // 1. FONTS
 const titleFont = Bebas_Neue({
@@ -333,30 +334,150 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. PROJECTS SECTION (Placeholder) */}
+
+
+      {/* 4. IMPLEMENTATION SECTION (Static Grid Layout) */}
       <section
         ref={(el) => { sectionRefs.current["PROJECTS"] = el; }}
-        className={`fixed inset-0 z-10 flex items-center justify-center bg-white p-8 transition-opacity duration-300 ${currentSection === "PROJECTS" ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        className={`fixed inset-0 z-10 flex flex-col items-center justify-center bg-[#F5F5F7] overflow-y-auto transition-opacity duration-300 ${currentSection === "PROJECTS" ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
           }`}
       >
-        <div className="text-center">
-          <h2 className="font-title text-5xl font-bold text-slate-900">PROJECTS</h2>
-          <p className="mt-4 text-xl text-gray-500">Coming Soon</p>
+        <div className="w-full max-w-[1400px] mx-auto pt-48 pb-12 px-20 md:px-40 scale-70 origin-top">
+          {/* Section Title */}
+          <div className="mb-8 text-left">
+            <h2 className="font-title text-4xl font-semibold tracking-tight text-[#1d1d1f] md:text-5xl">
+              구현 사례
+            </h2>
+            <p className="mt-2 text-lg text-[#86868b]">
+              실제 비즈니스 현장에 적용된 AI 솔루션 및 프로젝트입니다.
+            </p>
+          </div>
+
+          {/* Grid Layout */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: "수출용 무역 비즈니스 프롬프트 제작",
+                category: "Prompt Engineering",
+                year: "2025-2026",
+                description: "수출·무역용 이메일 및 문서 작성 프롬프트 템플릿 제작. 지피티코리아와 2건의 계약 체결 및 진행 중.",
+                image: "/images/lectures/수출.png"
+              },
+              {
+                title: "산업맞춤형 혁신바우처 프로그램",
+                category: "AI Consulting",
+                year: "2025",
+                description: "부서별 맞춤 생성형 AI 교육 및 컨설팅 제공. 약 5개월간 지피티코리아를 통해 산업 현장의 AI 도입 지원.",
+                image: "/images/lectures/혁신바우처.png"
+              },
+              {
+                title: "Agent 제작 커리큘럼 개발",
+                category: "Education",
+                year: "2024-2025",
+                description: "생성형 AI Agent 제작 교육을 위한 커리큘럼 설계 및 교육 자료 개발. 실무 중심의 학습 경험 제공.",
+                image: "/images/lectures/Agent.png"
+              },
+              {
+                title: "커리큘럼 장바구니 시스템",
+                category: "Product Development",
+                year: "2024",
+                description: "다양한 교육 커리큘럼을 효율적으로 보관하고 관리할 수 있는 시스템 개발.",
+                image: "/images/lectures/커리큘럼.png"
+              },
+              {
+                title: "광고운영 리포트 자동화",
+                category: "Automation",
+                year: "2024",
+                description: "AI Agent를 활용한 일일 및 주간 광고운영 리포트 자동 생성 도구 개발.",
+                image: "/images/lectures/광고리포트 성과 분석.png"
+              },
+              {
+                title: "이메일 작성 자동화 VBA",
+                category: "Automation",
+                year: "2024",
+                description: "Excel VBA를 활용한 템플릿 기반 이메일 자동 생성 도구 개발로 업무 효율성 극대화.",
+                image: "/images/lectures/email vba.png"
+              },
+              {
+                title: "검색 광고 운영 (Naver, Google)",
+                category: "Digital Marketing",
+                year: "2024",
+                description: "지피티코리아 검색 광고 담당. CPC 관리, 키워드 최적화, 광고운영 기획안 작성.",
+                image: "/images/lectures/구글네이버 광고 담당.png"
+              },
+              {
+                title: "ASSOCIO DIGITAL SUMMIT 2023",
+                category: "Event Management",
+                year: "2023",
+                description: "국제 행사 기획 및 운영 지원.",
+                image: "/images/lectures/ASSOSIO.png"
+              },
+            ].map((project, i) => (
+              <div
+                key={i}
+                className="group relative flex flex-col rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 overflow-hidden transition-all hover:-translate-y-2 hover:shadow-xl hover:ring-blue-100"
+              >
+                {/* Image Area */}
+                <div className="relative h-[160px] bg-gray-100 flex items-center justify-center overflow-hidden">
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.parentElement?.classList.add('bg-gradient-to-br', 'from-gray-100', 'to-gray-200');
+                      }}
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200" />
+                  )}
+
+                  {/* Fallback Icon (if image fails or hidden behind image until loaded) */}
+                  <div className={`absolute inset-0 flex items-center justify-center pointer-events-none ${project.image ? 'opacity-0' : 'opacity-100'}`}>
+                    <svg className="w-12 h-12 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                </div>
+
+                {/* Card Content */}
+                <div className="flex-1 p-5">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-body text-[10px] font-bold uppercase tracking-wider text-blue-600">
+                      {project.category}
+                    </span>
+                    <span className="font-body text-[10px] font-medium text-[#86868b]">
+                      {project.year}
+                    </span>
+                  </div>
+                  <h3 className="font-title text-base font-black text-[#1d1d1f] mb-1.5 leading-tight">
+                    {project.title}
+                  </h3>
+                  <p className="font-body text-xs leading-relaxed text-[#86868b] line-clamp-2">
+                    {project.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* 5. CONTACT SECTION (Placeholder) */}
+
+
+
+      {/* 5. CONTACT SECTION */}
       <section
         ref={(el) => { sectionRefs.current["CONTACT"] = el; }}
         className={`fixed inset-0 z-10 flex items-center justify-center bg-white p-8 transition-opacity duration-300 ${currentSection === "CONTACT" ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
           }`}
       >
-        <div className="text-center">
-          <h2 className="font-title text-5xl font-bold text-slate-900">CONTACT</h2>
-          <p className="mt-4 text-xl text-gray-500">Coming Soon</p>
-        </div>
-      </section>
+        <ContactSection />
+      </section >
 
-    </main>
+    </main >
   );
 }
