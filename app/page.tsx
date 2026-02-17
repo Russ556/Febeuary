@@ -45,6 +45,20 @@ export default function Home() {
   const timelineItemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [indicatorStyle, setIndicatorStyle] = useState({ top: 0, height: 0 });
 
+  // Initialize timeline indicator position
+  useEffect(() => {
+    if (currentSection === "PROFILE") {
+      const timer = setTimeout(() => {
+        const firstEl = timelineItemRefs.current[0];
+        if (firstEl) {
+          const top = firstEl.offsetTop + 6;
+          setIndicatorStyle({ top, height: 0 });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [currentSection]);
+
   // 3. ANIMATION LOGIC
   const handleNavigate = (direction: "up" | "down" | "left" | "right") => {
     if (isAnimating) return;
@@ -216,17 +230,17 @@ export default function Home() {
         className={`fixed inset-0 z-10 flex bg-[#F5F5F7] transition-opacity duration-300 ${currentSection === "PROFILE" ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
           }`}
       >
-        <div className="flex h-full w-full max-w-4xl mx-auto flex-col md:flex-row items-center justify-center gap-12 md:gap-20">
+        <div className="flex h-full w-full max-w-5xl mx-auto flex-col md:flex-row items-start justify-center pt-[12vh] gap-12 md:gap-20">
 
           {/* LEFT: Intro & Contact (Padding increased) */}
-          <div className="flex h-[40%] w-full flex-col justify-center px-12 md:h-full md:w-5/12 md:px-16 lg:px-20">
-            <div className="flex h-full flex-col justify-center mx-auto max-w-md">
+          <div className="flex w-full flex-col px-8 md:w-5/12 md:px-10 lg:px-12">
+            <div className="flex flex-col">
               <span className="mb-4 font-body text-xs font-bold uppercase tracking-[0.2em] text-blue-600 md:mb-6">
                 Profile
               </span>
 
               {/* Name & Role */}
-              <h2 className="font-title text-4xl font-black leading-none tracking-tighter text-[#1d1d1f] md:text-5xl lg:text-6xl xl:text-7xl">
+              <h2 className="font-title text-5xl font-black leading-none tracking-tighter text-[#1d1d1f] whitespace-nowrap md:text-6xl lg:text-7xl xl:text-8xl">
                 KIM<br />
                 HAK JONG
               </h2>
@@ -236,8 +250,8 @@ export default function Home() {
 
               {/* Bio */}
               <p className="mt-6 max-w-sm font-body text-sm leading-relaxed text-[#86868b] md:mt-8 md:text-base">
-                "AI 트렌드를 가장 빠르게 읽고, 조직에 필요한 형태로 가공하여 전달합니다.<br /><br />
-                이제는 교육을 넘어 기획부터 실행까지 전 과정을 주도하는 기획자로 성장하고 있습니다."
+                "AI 트렌드를 가장 빠르게 읽고, 조직에 필요한<br /> 형태로 가공하여 전달합니다."<br /><br />
+                "제 위치에서 조직에 기여할 수 있는 역할을<br /> 주도적으로 찾겠습니다."
               </p>
 
               {/* Contact Info (Integrated) */}
@@ -259,95 +273,63 @@ export default function Home() {
             </div>
           </div>
 
-          {/* RIGHT: Timeline (Padding increased) */}
-          <div className="flex h-[60%] w-full flex-col justify-center px-12 py-8 md:h-full md:w-7/12 md:pl-20 md:pr-32">
+          <div className="flex h-[60%] w-full flex-col justify-start px-8 py-8 md:h-auto md:w-7/12 md:px-10 lg:px-12">
 
-            <div className="flex h-full max-h-[600px] flex-col justify-center mx-auto max-w-lg">
-              <h3 className="mb-6 font-body text-xs font-bold uppercase tracking-[0.2em] text-[#86868b] md:mb-10 text-center">
-                Career History
+            <div className="flex flex-col">
+              <h3 className="mb-6 font-body text-xs font-bold uppercase tracking-[0.2em] text-[#86868b] md:mb-10">
+                Strategic Impact
               </h3>
 
-              <div className="relative border-l-2 border-[#d2d2d7]/50 ml-3 space-y-10 md:space-y-12">
-
-                {/* Visual Indicator (Moving Line & Dot) */}
-                <div
-                  className="absolute left-[-2px] w-[2px] bg-blue-500 transition-all duration-300 ease-out"
-                  style={{
-                    top: 0,
-                    height: `${indicatorStyle.height}px`
-                  }}
-                />
-                <div
-                  className="absolute left-[-9px] h-4 w-4 rounded-full border-4 border-[#F5F5F7] bg-blue-500 shadow-lg shadow-blue-500/50 transition-all duration-300 ease-out"
-                  style={{
-                    top: `${indicatorStyle.top}px`
-                  }}
-                />
-
-                {[
-                  {
-                    period: "現",
-                    role: "매니저",
-                    company: "(주)지피티코리아",
-                    desc: "AI 기획 및 실행 총괄"
-                  },
-                  {
-                    period: "2024",
-                    role: "교육컨설턴트(인턴), 연구원",
-                    company: "(주)오픈놀",
-                    desc: "교육 프로그램 기획 및 운영 지원"
-                  },
-                  {
-                    period: "2023",
-                    role: "기획자(사원)",
-                    company: "이앤씨커뮤니케이션",
-                    desc: "콘텐츠 기획 및 마케팅 전략 수립"
-                  },
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    ref={(el) => { timelineItemRefs.current[i] = el; }}
-                    className="relative pl-8 md:pl-10 cursor-pointer transition-all"
-                    onMouseEnter={() => {
-                      setHoveredTimelineIndex(i);
-                      const el = timelineItemRefs.current[i];
-                      const firstEl = timelineItemRefs.current[0];
-                      if (el && firstEl) {
-                        const top = el.offsetTop + 6;
-                        const startTop = firstEl.offsetTop + 6;
-                        setIndicatorStyle({ top: top, height: top - startTop });
-                      }
-                    }}
-                    onMouseLeave={() => {
-                      // Reset to first item
-                      const firstEl = timelineItemRefs.current[0];
-                      if (firstEl) {
-                        const top = firstEl.offsetTop + 6;
-                        setIndicatorStyle({ top: top, height: 0 });
-                      }
-                      setHoveredTimelineIndex(0);
-                    }}
-                  >
-                    {/* Placeholder Dot (Gray) */}
-                    <span className={`absolute -left-[9px] top-1.5 h-4 w-4 rounded-full border-4 border-[#F5F5F7] bg-[#d2d2d7] transition-opacity duration-300 ${hoveredTimelineIndex === i ? 'opacity-0' : 'opacity-100'
-                      }`}></span>
-
-                    <span className={`font-title text-sm font-bold transition-all duration-300 ${hoveredTimelineIndex === i ? 'text-blue-600 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]' : 'text-[#86868b]'
-                      } md:text-base`}>
-                      {item.period}
-                    </span>
-                    <h4 className="mt-1 font-body text-xl font-bold text-[#1d1d1f] md:text-2xl">
-                      {item.company}
-                    </h4>
-                    <p className="font-body text-base font-medium text-[#1d1d1f]/80 md:text-lg">
-                      {item.role}
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+                {/* Stat 1: AI Training */}
+                <div className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200 transition-all hover:-translate-y-1 hover:shadow-md hover:ring-blue-100">
+                  <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-blue-50 opacity-[0.03] transition-all group-hover:scale-150 group-hover:opacity-[0.08]" />
+                  <div className="relative">
+                    <span className="font-title text-4xl font-black tracking-tight text-blue-600 lg:text-5xl">40<span className="text-2xl ml-1 font-bold">회</span><svg className="w-6 h-6 ml-1 text-blue-600 inline-block align-middle mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" /></svg></span>
+                    <h4 className="mt-2 font-body text-lg font-bold text-[#1d1d1f]">AI 교육 및 특강</h4>
+                    <p className="mt-1 font-body text-sm leading-relaxed text-[#86868b]">
+                      생성형 AI 활용 출강 교육 진행 및 보조 전문가로서 현장의 AI 도입을 지원합니다.
                     </p>
                   </div>
-                ))}
+                </div>
+
+                {/* Stat 2: Productivity */}
+                <div className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200 transition-all hover:-translate-y-1 hover:shadow-md hover:ring-blue-100 md:col-span-1">
+                  <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-blue-50 opacity-[0.03] transition-all group-hover:scale-150 group-hover:opacity-[0.08]" />
+                  <div className="relative">
+                    <span className="font-title text-4xl font-black tracking-tight text-blue-600 lg:text-5xl">70<span className="text-2xl ml-1 font-bold">%</span><svg className="w-6 h-6 ml-1 text-blue-600 inline-block align-middle mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" /></svg></span>
+                    <h4 className="mt-2 font-body text-lg font-bold text-[#1d1d1f]">업무 생산성 향상</h4>
+                    <p className="mt-1 font-body text-sm leading-relaxed text-[#86868b]">
+                      맞춤형 업무 도구 제작을 통해 팀 전체의 프로세스 효율성을 극대화합니다.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Stat 3: External Activities (Full width on larger screens or just card) */}
+                <div className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200 transition-all hover:-translate-y-1 hover:shadow-md hover:ring-blue-100 md:col-span-2">
+                  <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-blue-50 opacity-[0.03] transition-all group-hover:scale-150 group-hover:opacity-[0.08]" />
+                  <div className="relative flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                      <span className="font-title text-4xl font-black tracking-tight text-blue-600 lg:text-5xl">10<span className="text-2xl ml-1 font-bold">회</span><svg className="w-6 h-6 ml-1 text-blue-600 inline-block align-middle mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" /></svg></span>
+                      <h4 className="mt-2 font-body text-lg font-bold text-[#1d1d1f]">네트워킹 및 대외 활동</h4>
+                      <p className="mt-1 font-body text-sm leading-relaxed text-[#86868b]">
+                        다양한 AI 커뮤니티 및 컨퍼런스 참여를 통해 최신 트렌드를 지속적으로 학습하고 공유합니다.
+                      </p>
+                    </div>
+                    <div className="mt-4 md:mt-0">
+                      <div className="flex -space-x-2">
+                        {[1, 2, 3, 4].map(i => (
+                          <div key={i} className="h-8 w-8 rounded-full border-2 border-white bg-gray-100 shadow-sm" />
+                        ))}
+                        <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-blue-50 text-[10px] font-bold text-blue-600">+6</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
           </div>
+
         </div>
       </section>
 
