@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f8f9fa;
+  --color-neutral-100: #f1f3f5;
+  --color-neutral-300: #dee2e6;
+  --color-neutral-500: #adb5bd;
+  --color-neutral-700: #495057;
+  --color-neutral-900: #212529;
+  --color-primary-500: #4a6fa5;
+  --color-primary-600: #3f5e8e;
+  --color-primary-700: #334b73;
+  --color-success: #2f9e44;
+  --color-warning: #f08c00;
+  --color-error: #e03131;
+  --color-info: #1c7ed6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-inter), sans-serif;
+  background: radial-gradient(circle at 30% 20%, #1d2f53 0%, #0f172a 45%, #020617 100%);
+  color: #ffffff;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
