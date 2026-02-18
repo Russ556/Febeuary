@@ -30,3 +30,105 @@ export const educationData = {
     period: "2015.03 - 2023.02",
     location: "경기"
 };
+
+export const communityLeadershipData = [
+    {
+        id: "cl001",
+        date: "2025.08 - 2025.11",
+        title: "'Make it AI' 동아리",
+        description: "2025 미디어센터 관악 생성형 AI 공모전 GAGA 참여 \n및 생성형 AI 도구를 활용한 캐릭터 확장 비주얼·영상 콘텐츠 제작 \n및 오프라인 전시 진행",
+        organization: "서울청년센터 금천"
+    },
+    {
+        id: "cl002",
+        date: "2025.07 - 2025.11",
+        title: "'AIDEA' 동아리",
+        description: "AI 스터디 동아리 AIDEA 리더로 활동하며 전체 스터디 기획 및 운영 담당",
+        organization: "광명시 청년동"
+    },
+    {
+        id: "cl003",
+        date: "2023.07",
+        title: "시민제안사업 문화지음소",
+        description: "광명시 문화도시 시민제안사업에 선정되어 사회초년생과 청년들을 위한 재무 관리 특강을 기획하고 운영",
+        organization: "광명시 문화도시"
+    },
+    {
+        id: "cl004",
+        date: "2020.06 - 2021.11",
+        title: "대한민국청소년의회 기자단",
+        description: "대학성·청년 기자단의 일원으로서 청소년들의 진로 진학에 실질적인 도움을 주는 '너의 학과는?' 기획 기사 시리즈를 연재",
+        organization: "대한민국청소년의회"
+    },
+    {
+        id: "cl005",
+        date: "2020.10 - 2020.11",
+        title: "'함께 읽고 서로 잇다' 북콘텐츠",
+        description: "서대문구 도시재생 프로젝트의 담당자로서 북콘서트의 기획, 섭외, 행사 운영 전반을 책임지고 수행",
+        organization: "신촌, 파랑고래"
+    },
+    {
+        id: "cl006",
+        date: "2020.09",
+        title: "청년일자리 프로젝트 공모 선정",
+        description: "구로 청년들을 위한 구인/구직 플랫폼 제작 프로젝트 수행",
+        organization: "구로구청"
+    },
+    {
+        id: "cl007",
+        date: "2020.07 - 2020.11",
+        title: "문화예술 콘텐츠 기획단",
+        description: "지역 예술가 지원을 위한 콘텐츠 발굴 및 전시회 기획·운영을 통해 지역 문화 활성화에 기여",
+        organization: "구로구 일자리지원과"
+    },
+    {
+        id: "cl008",
+        date: "2020.07",
+        title: "행정학과 경진대회 우수상",
+        description: "학과 내 경진대회에서 우수상 수상",
+        organization: "성결대학교"
+    },
+    {
+        id: "cl009",
+        date: "2020.06",
+        title: "청년현장발굴사업 ‘OO로드’",
+        description: "지방 청년 기획자들을 발굴하고 그들의 활동 발자취를 기록하는 인터뷰 및 아카이빙 프로젝트 진행",
+        organization: "서울특별시 청년교류공간"
+    },
+    {
+        id: "cl010",
+        date: "2020.06 - 2020.09",
+        title: "문화예술기획학교 실무 과정",
+        description: "실무형 문화예술기획학교 과정을 수료하고 도시재생 프로젝트 '신촌, 기억날지도' 기획 및 실행",
+        organization: "서대문구 도시재생과"
+    },
+    {
+        id: "cl011",
+        date: "2020.01",
+        title: "행정학과 경진대회 우수상",
+        description: "학과 내 경진대회에서 우수상 수상",
+        organization: "성결대학교"
+    },
+    {
+        id: "cl012",
+        date: "2019.08 - 2019.12",
+        title: "밀레니얼 공작소 2기",
+        description: "'공연·부스팀'의 일원으로서 뉴트로 컨셉의 문화 행사와 체험 부스를 기획·운영",
+        organization: "신촌, 파랑고래"
+    },
+    {
+        id: "cl014",
+        date: "2019.03 - 2019.06",
+        title: "밀레니얼 공작소 1기",
+        description: "강연팀의 일원으로서 총 세 개의 세션 중 두 번째 세션의 기획, 운영 및 진행 담당",
+        organization: "신촌, 파랑고래"
+    },
+    {
+        id: "cl013",
+        date: "2018.09 - 2018.12",
+        title: "문화기획 취업 동아리",
+        description: "교내 음악 학부에서 진행하는 각종 연주회 및 경진대회 학부 행사 기획 및 운영",
+        organization: "성결대학교"
+    }
+];
+

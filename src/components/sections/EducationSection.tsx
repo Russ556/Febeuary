@@ -24,16 +24,7 @@ export function EducationSection() {
 
       {/* Auto-Scroll Container - Only this area pauses on hover */}
       <div className="relative w-full max-w-[1240px] mx-auto flex items-center overflow-hidden px-12 md:px-24">
-        <style jsx>{`
-          @keyframes scroll-education {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
-        `}</style>
+
 
         {/* Scrolling Track */}
         <div
