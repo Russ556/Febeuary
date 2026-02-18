@@ -404,7 +404,7 @@ export default function Home() {
                 image: "/images/lectures/구글네이버 광고 담당.png"
               },
               {
-                title: "ASSOCIO DIGITAL SUMMIT 2023",
+                title: "ASOCIO Digital Summit 2023",
                 category: "Event Management",
                 year: "2023",
                 description: "국제 행사 기획 및 운영 지원",
