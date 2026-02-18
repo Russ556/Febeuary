@@ -251,12 +251,12 @@ export default function Home() {
             {/* Quote */}
             <div className="mb-10 space-y-3">
               <p className="font-body text-sm leading-relaxed text-[#86868b] font-medium">
-                "AI 트렌드를 가장 빠르게 읽고, 조직에 필요한
-                형태로 가공하여 전달합니다."
+                "AI 트렌드를 가장 빠르게 읽고, 조직에 필요한 형태로<br />
+                가공하여 전달합니다."
               </p>
               <p className="font-body text-sm leading-relaxed text-[#86868b] font-medium">
-                "제 위치에서 조직에 기여할 수 있는 역할을
-                주도적으로 찾겠습니다."
+                "제 위치에서 조직에 기여할 수 있는 역할을 주도적으로<br />
+                찾겠습니다."
               </p>
             </div>
 
@@ -281,7 +281,7 @@ export default function Home() {
           <div className="flex w-full flex-col md:w-7/12 lg:w-8/12 h-full justify-center">
 
             <h3 className="mb-4 font-body text-[10px] font-bold uppercase tracking-[0.2em] text-[#86868b]">
-              STRATEGIC IMPACT
+              Teaching & Instructional Experience
             </h3>
 
             {/* Lecture Image */}
@@ -344,10 +344,10 @@ export default function Home() {
           {/* Section Title */}
           <div className="mb-8 text-left">
             <h2 className="font-title text-4xl font-semibold tracking-tight text-[#1d1d1f] md:text-5xl">
-              구현 사례
+              Projects
             </h2>
             <p className="mt-2 text-lg text-[#86868b]">
-              실제 비즈니스 현장에 적용된 AI 솔루션 및 프로젝트입니다.
+              수행한 프로젝트 및 실무 수행 사례입니다.
             </p>
           </div>
 
@@ -358,56 +358,56 @@ export default function Home() {
                 title: "수출용 무역 비즈니스 프롬프트 제작",
                 category: "Prompt Engineering",
                 year: "2025-2026",
-                description: "수출·무역용 이메일 및 문서 작성 프롬프트 템플릿 제작.",
+                description: "수출·무역용 이메일 및 문서 작성 프롬프트 템플릿 제작",
                 image: "/images/lectures/수출.png"
               },
               {
                 title: "산업맞춤형 혁신바우처 프로그램",
                 category: "AI Consulting",
                 year: "2025",
-                description: "부서별 맞춤 생성형 AI 교육 및 컨설팅 제공.",
+                description: "부서별 맞춤 생성형 AI 교육 및 컨설팅 제공",
                 image: "/images/lectures/혁신바우처.png"
               },
               {
                 title: "Agent 제작 커리큘럼 개발",
                 category: "Education",
                 year: "2024-2025",
-                description: "생성형 AI Agent 제작 교육을 위한 커리큘럼 설계 및 교육 자료 개발.",
+                description: "생성형 AI Agent 제작 교육을 위한 커리큘럼 설계 및 교육 자료 개발",
                 image: "/images/lectures/Agent.png"
               },
               {
                 title: "커리큘럼 장바구니 시스템",
                 category: "Product Development",
                 year: "2024",
-                description: "다양한 교육 커리큘럼을 효율적으로 보관하고 관리할 수 있는 시스템 개발.",
+                description: "다양한 교육 커리큘럼을 효율적으로 보관하고 관리할 수 있는 시스템 개발",
                 image: "/images/lectures/커리큘럼.png"
               },
               {
                 title: "광고운영 리포트 자동화",
                 category: "Automation",
                 year: "2024",
-                description: "AI Agent를 활용한 일일 및 주간 광고운영 리포트 자동 생성 도구 개발.",
+                description: "AI Agent를 활용한 일일 및 주간 광고운영 리포트 자동 생성 도구 개발",
                 image: "/images/lectures/광고리포트 성과 분석.png"
               },
               {
                 title: "이메일 작성 자동화 VBA",
                 category: "Automation",
                 year: "2024",
-                description: "Excel VBA를 활용한 템플릿 기반 이메일 자동 생성 도구 개발.",
+                description: "Excel VBA를 활용한 템플릿 기반 이메일 자동 생성 도구 개발",
                 image: "/images/lectures/email vba.png"
               },
               {
                 title: "검색 광고 운영 (Naver, Google)",
                 category: "Digital Marketing",
                 year: "2024",
-                description: "지피티코리아 검색 광고 담당.",
+                description: "지피티코리아 검색 광고 담당",
                 image: "/images/lectures/구글네이버 광고 담당.png"
               },
               {
                 title: "ASSOCIO DIGITAL SUMMIT 2023",
                 category: "Event Management",
                 year: "2023",
-                description: "국제 행사 기획 및 운영 지원.",
+                description: "국제 행사 기획 및 운영 지원",
                 image: "/images/lectures/ASSOSIO.png"
               },
             ].map((project, i) => (
